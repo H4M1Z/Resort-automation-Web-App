@@ -1,6 +1,6 @@
 import 'package:resort_web_app/barrel.dart';
-import 'package:resort_web_app/features/theme/theme.dart';
-import 'package:resort_web_app/features/weather_page/view/weather_page.dart';
+import 'package:resort_web_app/features/qr_code_page/view/qr_code_page.dart';
+import 'package:resort_web_app/theme/theme.dart';
 
 void main() {
   runApp(
@@ -17,7 +17,7 @@ class ResortApp extends ConsumerWidget {
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
       theme: lightTheme,
-      home: WeatherPage(),
+      home: QRCodePage(),
     );
   }
 }

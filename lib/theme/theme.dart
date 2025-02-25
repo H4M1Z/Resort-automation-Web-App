@@ -1,4 +1,4 @@
-import '../../barrel.dart';
+import '../barrel.dart';
 
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,

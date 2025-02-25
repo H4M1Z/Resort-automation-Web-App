@@ -15,6 +15,8 @@ class SettingsBrightnessColumn extends StatelessWidget {
           flex: 7,
           child: BrightnessImage(),
         ),
+
+        //!...................................... ALIGN IT ACCORDINGLY
         Expanded(
           child: AppBackButton(),
         )

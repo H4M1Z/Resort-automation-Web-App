@@ -13,9 +13,8 @@ class WeatherPage extends StatelessWidget {
             child: WeatherUpperCard(),
           ),
           Expanded(
-              child: Container(
-            color: Colors.red,
-          ))
+            child: WeatherLowerCard(),
+          )
         ],
       ),
     );
