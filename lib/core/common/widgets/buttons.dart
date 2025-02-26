@@ -6,21 +6,24 @@ class AppBackButton extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).brightness == Brightness.dark
-            ? AppColors.whiteColor
-            : AppColors.blackColor,
-      ),
-      child: Center(
-        child: Icon(
-          Icons.arrow_back_ios_new,
+    return GestureDetector(
+      onTap: () => Navigator.pop(context),
+      child: Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
           color: Theme.of(context).brightness == Brightness.dark
-              ? AppColors.blackColor
-              : AppColors.whiteColor,
+              ? AppColors.whiteColor
+              : AppColors.blackColor,
+        ),
+        child: Center(
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? AppColors.blackColor
+                : AppColors.whiteColor,
+          ),
         ),
       ),
     );

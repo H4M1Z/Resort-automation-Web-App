@@ -45,6 +45,9 @@ abstract class AppStringConstants {
   static const String automationSelectionScreenManual = 'Manual';
   static const String automationSelectionScreenMotionSensor =
       'Motion Sensor Light';
+  //.................QR CODE SCREEN --------------------------------
+  static const String qrCodeScreenMachaDevText =
+      'Powered By MachaDev Engineering';
 }
 
 abstract class AppNumericCosntants {

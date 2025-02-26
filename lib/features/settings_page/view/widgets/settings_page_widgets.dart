@@ -15,10 +15,8 @@ class SettingsBrightnessColumn extends StatelessWidget {
           flex: 7,
           child: BrightnessImage(),
         ),
-
-        //!...................................... ALIGN IT ACCORDINGLY
         Expanded(
-          child: AppBackButton(),
+          child: Align(alignment: Alignment(-0.9, 0.0), child: AppBackButton()),
         )
       ],
     );
@@ -74,6 +72,7 @@ class SettingsDateAndTimeColumn extends StatelessWidget {
         ),
         Expanded(
           child: SetDateAndTimeWidget(
+            onTap: () => Navigator.pushNamed(context, RouteName.dateSetting),
             firstText: AppStringConstants.settingsScreenSetDate,
             secondText: AppStringConstants.settingsScreenMMDDYYY,
             icon: Icons.calendar_month_rounded,
@@ -84,6 +83,7 @@ class SettingsDateAndTimeColumn extends StatelessWidget {
         ),
         Expanded(
           child: SetDateAndTimeWidget(
+            onTap: () => Navigator.pushNamed(context, RouteName.timeSetting),
             firstText: AppStringConstants.settingsScreenSetTime,
             secondText: AppStringConstants.settingsScreenHHMMSS,
             icon: Icons.access_time_rounded,
@@ -123,50 +123,53 @@ class SetDateAndTimeWidget extends StatelessWidget {
       {super.key,
       required this.firstText,
       required this.secondText,
-      required this.icon});
+      required this.icon,
+      required this.onTap});
   final String firstText;
   final String secondText;
   final IconData icon;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-            child: Column(
-          children: [
-            Expanded(
-                child: Center(
-              child: Text(
-                firstText,
-                style: GoogleFonts.montserrat(
-                  fontSize: 28,
-                  color: Theme.of(context).textTheme.bodyLarge!.color,
-                  fontWeight: FontWeight.w600,
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Expanded(
+              child: Column(
+            children: [
+              Expanded(
+                  child: Center(
+                child: Text(
+                  firstText,
+                  style: GoogleFonts.montserrat(
+                    fontSize: 28,
+                    color: Theme.of(context).textTheme.bodyLarge!.color,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            )),
-            Expanded(
-                child: Center(
-              child: Text(
-                secondText,
-                style: GoogleFonts.montserrat(
-                  fontSize: 28,
-                  color: Theme.of(context).textTheme.bodyLarge!.color,
-                  fontWeight: FontWeight.w600,
+              )),
+              Expanded(
+                  child: Center(
+                child: Text(
+                  secondText,
+                  style: GoogleFonts.montserrat(
+                    fontSize: 28,
+                    color: Theme.of(context).textTheme.bodyLarge!.color,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            ))
-          ],
-        )),
-        Expanded(
-            child: GestureDetector(
-                onTap: () => '',
-                child: Icon(
-                  icon,
-                  color: Theme.of(context).iconTheme.color,
-                  size: 100,
-                ))),
-      ],
+              ))
+            ],
+          )),
+          Expanded(
+              child: Icon(
+            icon,
+            color: Theme.of(context).iconTheme.color,
+            size: 100,
+          )),
+        ],
+      ),
     );
   }
 }

@@ -1,6 +1,4 @@
 import 'package:resort_web_app/barrel.dart';
-import 'package:resort_web_app/features/qr_code_page/view/qr_code_page.dart';
-import 'package:resort_web_app/theme/theme.dart';
 
 void main() {
   runApp(
@@ -14,10 +12,13 @@ class ResortApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: RouteName.home,
+      onGenerateRoute: onGenerateRoute,
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
       theme: lightTheme,
-      home: QRCodePage(),
+      home: HomePage(),
     );
   }
 }

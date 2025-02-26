@@ -1,5 +1,4 @@
 import 'package:intl/intl.dart';
-import 'package:resort_web_app/config/screen_size.dart';
 
 import '../../../../barrel.dart';
 
@@ -52,9 +51,13 @@ class HomePageTopDesign extends StatelessWidget {
           child: Column(
             children: [
               //.................CELCIUS TEXT
-              Expanded(child: CelciusText()),
+              Expanded(
+                child: CelciusText(),
+              ),
 
-              Expanded(child: WeatherImage())
+              Expanded(
+                child: WeatherImage(),
+              )
             ],
           ),
         )
@@ -125,7 +128,7 @@ class WeatherImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Navigator.pushNamed(context, RouteName.weather),
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Align(
@@ -260,22 +263,27 @@ class HomePageBottomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             BottomNavItem(
+              onTap: () => Navigator.pushNamed(context, RouteName.settings),
               imagePath: 'assets/images/settings_icon.png',
               text: AppStringConstants.homeScreenSettings,
             ),
             BottomNavItem(
+              onTap: () => '',
               imagePath: 'assets/images/laundry_icon.png',
               text: AppStringConstants.homeScreenLaundry,
             ),
             BottomNavItem(
+              onTap: () => '',
               imagePath: 'assets/images/control_home_icon.png',
               text: AppStringConstants.homeScreenControls,
             ),
             BottomNavItem(
+              onTap: () => '',
               imagePath: 'assets/images/cleaning_icon.png',
               text: AppStringConstants.homeScreenCleaning,
             ),
             BottomNavItem(
+              onTap: () => '',
               imagePath: 'assets/images/donot_disturb.png',
               text: AppStringConstants.homeScreenDontDisturb,
             ),
@@ -287,36 +295,44 @@ class HomePageBottomNavBar extends StatelessWidget {
 }
 
 class BottomNavItem extends StatelessWidget {
-  const BottomNavItem({super.key, required this.imagePath, required this.text});
+  const BottomNavItem(
+      {super.key,
+      required this.imagePath,
+      required this.text,
+      required this.onTap});
   final String imagePath;
   final String text;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Spacer(),
-        Expanded(
-          child: Center(
-            child: Image.asset(
-              width: 50,
-              height: 50,
-              imagePath,
-              color: AppColors.blackColor,
-            ),
-          ),
-        ),
-        Expanded(
-          child: Center(
-            child: Text(
-              text,
-              style: GoogleFonts.montserrat(
-                fontSize: 15,
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Spacer(),
+          Expanded(
+            child: Center(
+              child: Image.asset(
+                width: 50,
+                height: 50,
+                imagePath,
                 color: AppColors.blackColor,
               ),
             ),
           ),
-        ),
-      ],
+          Expanded(
+            child: Center(
+              child: Text(
+                text,
+                style: GoogleFonts.montserrat(
+                  fontSize: 15,
+                  color: AppColors.blackColor,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
